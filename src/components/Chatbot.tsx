@@ -21,7 +21,7 @@ export default function Chatbot() {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
     const [suggestions, setSuggestions] = useState<string[]>([]);
-    const messagesEndRef = useRef<HTMLDivElement>(null);
+    const chatContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const POOL = [
@@ -41,7 +41,12 @@ export default function Chatbot() {
     }, []);
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTo({
+                top: chatContainerRef.current.scrollHeight,
+                behavior: "smooth",
+            });
+        }
     };
 
     useEffect(() => {
@@ -101,9 +106,9 @@ export default function Chatbot() {
     };
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[600px] font-sans">
-            {/* Chat Interface (Left - 8 columns) */}
-            <div className="lg:col-span-8 flex flex-col h-full bg-bot-bg rounded-3xl border border-bot-border shadow-2xl overflow-hidden relative">
+        <div className="flex flex-col gap-8 font-sans max-w-7xl mx-auto">
+            {/* Chat Interface */}
+            <div className="h-[600px] lg:h-[700px] flex flex-col bg-bot-bg rounded-3xl border border-bot-border shadow-2xl overflow-hidden relative">
                 {/* Header */}
                 <div className="flex items-center gap-4 p-5 border-b border-bot-border bg-bot-surface/50 backdrop-blur-sm relative z-10">
                     <div className="p-2.5 bg-bot-surface-hover rounded-xl shadow-inner border border-bot-border">
@@ -125,7 +130,7 @@ export default function Chatbot() {
                 </div>
 
                 {/* Messages */}
-                <div className="flex-1 overflow-y-auto p-5 space-y-6">
+                <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-5 space-y-6">
                     <AnimatePresence initial={false} mode="popLayout">
                         {messages.map((message) => (
                             <motion.div
@@ -170,7 +175,6 @@ export default function Chatbot() {
                             </div>
                         </motion.div>
                     )}
-                    <div ref={messagesEndRef} />
                 </div>
 
                 {/* Input */}
@@ -218,9 +222,9 @@ export default function Chatbot() {
                 </form>
             </div>
 
-            {/* Info Section (Right - 4 columns) */}
-            <div className="lg:col-span-4 flex flex-col h-full space-y-4 overflow-y-auto">
-                <div className="flex items-start gap-4 p-5 rounded-3xl bg-bot-bg border border-bot-border shadow-lg">
+            {/* Info Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="flex items-start gap-4 p-5 rounded-3xl bg-bot-bg border border-bot-border shadow-lg h-full">
                     <div className="p-2 bg-bot-surface-hover rounded-xl shrink-0 border border-bot-border">
                         <Brain className="w-5 h-5 text-bot-primary" />
                     </div>
@@ -232,7 +236,7 @@ export default function Chatbot() {
                     </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-5 rounded-3xl bg-bot-bg border border-bot-border shadow-lg">
+                <div className="flex items-start gap-4 p-5 rounded-3xl bg-bot-bg border border-bot-border shadow-lg h-full">
                     <div className="p-2 bg-bot-surface-hover rounded-xl shrink-0 border border-bot-border">
                         <Database className="w-5 h-5 text-emerald-500" />
                     </div>
@@ -244,7 +248,7 @@ export default function Chatbot() {
                     </div>
                 </div>
 
-                <div className="flex-1 p-5 rounded-3xl bg-bot-bg border border-bot-border shadow-lg flex flex-col">
+                <div className="p-5 rounded-3xl bg-bot-bg border border-bot-border shadow-lg flex flex-col h-full">
                     <div className="flex items-center gap-3 mb-4">
                         <div className="p-2 bg-bot-surface-hover rounded-xl shrink-0 border border-bot-border">
                             <HelpCircle className="w-5 h-5 text-blue-500" />

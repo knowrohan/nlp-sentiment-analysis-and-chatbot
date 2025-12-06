@@ -80,12 +80,12 @@ export function TechniqueAnalysis({ data }: AnalysisProps) {
     }, [data]);
 
     return (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="col-span-2"
+                className="col-span-1 md:col-span-2"
             >
                 <Card className="border-border shadow-sm hover:shadow-md transition-shadow duration-200">
                     <CardHeader>
@@ -150,7 +150,7 @@ export function TechniqueAnalysis({ data }: AnalysisProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="col-span-2"
+                className="col-span-1 md:col-span-2"
             >
                 <Card className="border-border shadow-sm bg-muted/50">
                     <CardContent className="pt-6">

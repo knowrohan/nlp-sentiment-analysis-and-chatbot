@@ -125,10 +125,10 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
               Explore the top <span className="font-semibold text-foreground">{topicMetrics.length}</span> discussed topics. Click on any bar to see what people are actually saying.
             </p>
           </div>
-          <div className="flex space-x-1 bg-muted p-1.5 rounded-xl">
+          <div className="flex flex-wrap gap-1 bg-muted p-1.5 rounded-xl">
             <button
               onClick={() => setViewMode("sentiment")}
-              className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${viewMode === "sentiment"
+              className={`flex items-center px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${viewMode === "sentiment"
                 ? "bg-card shadow-sm text-blue-600 ring-1 ring-black/5 dark:ring-border"
                 : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
@@ -138,7 +138,7 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
             </button>
             <button
               onClick={() => setViewMode("accuracy")}
-              className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${viewMode === "accuracy"
+              className={`flex items-center px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${viewMode === "accuracy"
                 ? "bg-card shadow-sm text-blue-600 ring-1 ring-black/5 dark:ring-border"
                 : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
@@ -256,60 +256,62 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-8 px-2 sm:px-8">
-                <div className="h-[500px] w-full">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart
-                      data={topicMetrics}
-                      margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
-                      onClick={handleBarClick}
-                      className="cursor-pointer"
-                    >
-                      <CartesianGrid strokeDasharray="3 3" className="stroke-border" vertical={false} />
-                      <XAxis
-                        dataKey="name"
-                        angle={-45}
-                        textAnchor="end"
-                        height={80}
-                        className="text-xs font-medium text-muted-foreground"
-                        tick={{ fill: 'currentColor' }}
-                        axisLine={{ stroke: 'var(--border)' }}
-                        tickLine={false}
-                      />
-                      <YAxis
-                        className="text-xs font-medium text-muted-foreground"
-                        tick={{ fill: 'currentColor' }}
-                        axisLine={{ stroke: 'var(--border)' }}
-                        tickLine={false}
-                      />
-                      <Tooltip
-                        cursor={{ fill: 'var(--muted)', opacity: 0.8 }}
-                        contentStyle={{
-                          backgroundColor: "#ffffff",
-                          borderRadius: "16px",
-                          border: "1px solid #e2e8f0",
-                          boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
-                          padding: "16px"
-                        }}
-                        itemStyle={{ fontSize: "13px", fontWeight: 600, padding: "2px 0" }}
-                      />
-                      <Legend wrapperStyle={{ paddingTop: "20px" }} iconType="circle" />
-                      {viewMode === "sentiment" ? (
-                        <>
-                          <Bar dataKey="Positive" stackId="a" fill="#10b981" radius={[0, 0, 4, 4]} />
-                          <Bar dataKey="Negative" stackId="a" fill="#f43f5e" />
-                          <Bar dataKey="Neutral" stackId="a" fill="#3b82f6" />
-                          <Bar dataKey="Irrelevant" stackId="a" fill="#94a3b8" radius={[4, 4, 0, 0]} />
-                        </>
-                      ) : (
-                        <Bar
-                          dataKey="Accuracy"
-                          fill="#6366f1"
-                          radius={[6, 6, 0, 0]}
-                          activeBar={{ fill: '#4f46e5' }}
+                <div className="overflow-x-auto pb-4">
+                  <div className="h-[500px] w-full min-w-[600px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart
+                        data={topicMetrics}
+                        margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
+                        onClick={handleBarClick}
+                        className="cursor-pointer"
+                      >
+                        <CartesianGrid strokeDasharray="3 3" className="stroke-border" vertical={false} />
+                        <XAxis
+                          dataKey="name"
+                          angle={-45}
+                          textAnchor="end"
+                          height={80}
+                          className="text-xs font-medium text-muted-foreground"
+                          tick={{ fill: 'currentColor' }}
+                          axisLine={{ stroke: 'var(--border)' }}
+                          tickLine={false}
                         />
-                      )}
-                    </BarChart>
-                  </ResponsiveContainer>
+                        <YAxis
+                          className="text-xs font-medium text-muted-foreground"
+                          tick={{ fill: 'currentColor' }}
+                          axisLine={{ stroke: 'var(--border)' }}
+                          tickLine={false}
+                        />
+                        <Tooltip
+                          cursor={{ fill: 'var(--muted)', opacity: 0.8 }}
+                          contentStyle={{
+                            backgroundColor: "#ffffff",
+                            borderRadius: "16px",
+                            border: "1px solid #e2e8f0",
+                            boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
+                            padding: "16px"
+                          }}
+                          itemStyle={{ fontSize: "13px", fontWeight: 600, padding: "2px 0" }}
+                        />
+                        <Legend wrapperStyle={{ paddingTop: "20px" }} iconType="circle" />
+                        {viewMode === "sentiment" ? (
+                          <>
+                            <Bar dataKey="Positive" stackId="a" fill="#10b981" radius={[0, 0, 4, 4]} />
+                            <Bar dataKey="Negative" stackId="a" fill="#f43f5e" />
+                            <Bar dataKey="Neutral" stackId="a" fill="#3b82f6" />
+                            <Bar dataKey="Irrelevant" stackId="a" fill="#94a3b8" radius={[4, 4, 0, 0]} />
+                          </>
+                        ) : (
+                          <Bar
+                            dataKey="Accuracy"
+                            fill="#6366f1"
+                            radius={[6, 6, 0, 0]}
+                            activeBar={{ fill: '#4f46e5' }}
+                          />
+                        )}
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
                 </div>
               </CardContent>
             </Card>

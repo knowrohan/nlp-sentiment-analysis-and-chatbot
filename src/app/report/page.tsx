@@ -6,10 +6,10 @@ import { ArrowLeft, FileText, BarChart2, Brain, GitBranch, Binary, Code, Databas
 
 export default function ReportPage() {
     return (
-        <div className="min-h-screen bg-background p-8">
-            <div className="mx-auto max-w-4xl space-y-12">
+        <div className="min-h-screen bg-background p-4 md:p-8">
+            <div className="mx-auto max-w-4xl space-y-8 md:space-y-12">
                 {/* Header */}
-                <header className="space-y-6 pt-8">
+                <header className="space-y-4 md:space-y-6 pt-4 md:pt-8">
                     <Link
                         href="/"
                         className="inline-flex items-center text-sm text-muted-foreground hover:text-blue-600 transition-colors"
@@ -25,10 +25,10 @@ export default function ReportPage() {
                         className="space-y-4"
                     >
                         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                            Sentiment Analysis Report
+                            Sentiment Analysis Project Report
                         </h1>
                         <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
-                            A comprehensive evaluation of four machine learning techniques for sentiment classification, coupled with an intelligent RAG-based poker assistant.
+                            An evaluation of four techniques for sentiment classification and a Chatbot with its own knowledge base for a poker assistant.
                         </p>
                     </motion.div>
                 </header>
@@ -49,69 +49,27 @@ export default function ReportPage() {
                         </div>
                         <div className="prose prose-slate dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
                             <p>
-                                This study compares the performance of four distinct machine learning algorithms in classifying text sentiment.
+                                <strong>Part 1</strong> focuses on the comparative analysis of four machine learning algorithms for sentiment classification
                                 By analyzing a dataset of labeled text, we evaluate each model&apos;s accuracy, precision, and reliability to determine
-                                the most effective approach for automated sentiment analysis. Additionally, we integrate a Generative AI chatbot configured with Retrieval Augmented Generation (RAG) principles to serve as a domain expert.
+                                the most effective approach for automated sentiment analysis.
+
+                                <br></br>
+                                <strong>Part 2</strong> Ideally I wanted to use the processed data for a RAG chatbot with ways to select topics, but unfortunately time didn't permit.
+                                Instead I used Gemini 2.0 Flash and a  RAG (Retrieval Augmented Generation) architecture for domain specific expertise.
                             </p>
                         </div>
                     </motion.section>
 
-                    {/* Chatbot Architecture */}
-                    <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="space-y-8"
-                    >
-                        <div className="flex items-center gap-3 text-blue-600">
-                            <MessageSquare className="w-6 h-6" />
-                            <h2 className="text-2xl font-bold text-foreground">AI Assistant Architecture</h2>
+                    <div className="relative py-4">
+                        <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                            <div className="w-full border-t border-border" />
                         </div>
-
-                        <div className="grid gap-6 md:grid-cols-2">
-                            <div className="p-6 rounded-2xl bg-foreground text-background shadow-xl overflow-hidden relative group">
-                                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                                    <Sparkles className="w-32 h-32" />
-                                </div>
-                                <div className="relative z-10 space-y-4">
-                                    <div className="flex items-center gap-3 text-amber-400">
-                                        <Brain className="w-6 h-6" />
-                                        <h3 className="text-xl font-bold text-background">The Brain: Gemini 2.0</h3>
-                                    </div>
-                                    <p className="leading-relaxed">
-                                        The core intelligence is powered by Google&apos;s <strong>Gemini 2.0 Flash</strong> model. Selected for its low latency and high reasoning capabilities, it processes natural language queries with context-aware precision.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="p-6 rounded-2xl bg-card border border-border shadow-sm">
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-3 text-indigo-600">
-                                        <Database className="w-6 h-6" />
-                                        <h3 className="text-xl font-bold text-foreground">Context Injection (RAG)</h3>
-                                    </div>
-                                    <p className="text-muted-foreground leading-relaxed">
-                                        Unlike standard chatbots, this assistant doesn&apos;t hallucinate rules. We utilize a static RAG (Retrieval-Augmented Generation) approach where the entire <strong>Poker Knowledge Base</strong> (rules, hands, strategies) is injected into the model&apos;s system instruction.
-                                    </p>
-                                    <ul className="space-y-2 mt-4">
-                                        <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                            System Instruction: &quot;You are a helpful assistant...&quot;
-                                        </li>
-                                        <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                            Context: &quot;Poker Definitions, Hand Rankings...&quot;
-                                        </li>
-                                        <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                            User Query: &quot;What is a Flush?&quot;
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div className="relative flex justify-center text-sm font-medium leading-6">
+                            <span className="bg-background px-4 text-muted-foreground">Part 1: Sentiment Analysis</span>
                         </div>
-                    </motion.section>
+                    </div>
+
+
 
                     {/* Methodology & Data Pipeline */}
                     <motion.section
@@ -319,7 +277,7 @@ print("Training models...")
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="space-y-6 pb-12"
+                        className="space-y-6"
                     >
                         <div className="p-6 rounded-2xl bg-muted border border-border">
                             <h3 className="text-lg font-bold text-foreground mb-3">Key Findings</h3>
@@ -329,6 +287,106 @@ print("Training models...")
                                 typically demonstrate superior accuracy at the cost of computational resources. The &quot;Best Model&quot; tab
                                 on the dashboard highlights the top-performing technique based on the current dataset.
                             </p>
+                        </div>
+                    </motion.section>
+
+                    <div className="relative py-8">
+                        <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                            <div className="w-full border-t border-border" />
+                        </div>
+                        <div className="relative flex justify-center text-sm font-medium leading-6">
+                            <span className="bg-background px-4 text-muted-foreground">Part 2: Chatbot Implementation</span>
+                        </div>
+                    </div>
+
+                    {/* Chatbot Architecture */}
+                    <motion.section
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="space-y-8 pb-12"
+                    >
+                        <div className="flex items-center gap-3 text-blue-600">
+                            <MessageSquare className="w-6 h-6" />
+                            <h2 className="text-2xl font-bold text-foreground">AI Assistant Architecture</h2>
+                        </div>
+
+                        <div className="grid gap-6 md:grid-cols-2">
+                            {/* Card 1: System Setup */}
+                            <div className="p-6 rounded-2xl bg-card border border-border shadow-sm flex flex-col justify-between">
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3 text-indigo-600">
+                                        <Settings className="w-6 h-6" />
+                                        <h3 className="text-xl font-bold text-foreground">System Setup</h3>
+                                    </div>
+                                    <p className="text-muted-foreground leading-relaxed">
+                                        The assistant is built on <strong>Gemini 2.0 Flash</strong>, configured with a knowledge base derived from sources including <a href="https://www.masterclass.com/articles/types-of-poker-explained" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">MasterClass</a>, Wikipedia, and other strategy guides.
+                                    </p>
+                                    <div className="pt-2 space-y-2">
+                                        <div className="flex items-center gap-2 text-sm text-foreground font-medium">
+                                            <Brain className="w-4 h-4 text-amber-500" />
+                                            <span>Model Registration</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-sm text-foreground font-medium">
+                                            <Database className="w-4 h-4 text-emerald-500" />
+                                            <span>Poker Knowledge Base (RAG)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Card 2: Process Flow */}
+                            <div className="p-6 rounded-2xl bg-card border border-border shadow-sm flex flex-col justify-center">
+                                <div className="flex items-center gap-3 text-blue-600 mb-6">
+                                    <GitBranch className="w-6 h-6" />
+                                    <h3 className="text-xl font-bold text-foreground">Interaction Process</h3>
+                                </div>
+
+                                <div className="flex flex-col gap-2 relative max-w-sm mx-auto w-full">
+                                    {/* Line connecting nodes */}
+                                    <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-gradient-to-b from-indigo-500 via-amber-500 to-emerald-500 opacity-30 ml-[1px]"></div>
+
+                                    {/* Step 1 */}
+                                    <div className="relative z-10 flex items-center gap-4 group">
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                                            <FileText className="w-5 h-5 text-white" />
+                                        </div>
+                                        <div className="flex-1 p-3 rounded-xl bg-muted/30 border border-border/50 hover:bg-muted/60 transition-colors backdrop-blur-sm">
+                                            <div className="text-xs font-bold text-indigo-500 uppercase tracking-wider mb-0.5">Input</div>
+                                            <div className="text-sm font-medium text-foreground">System Instructions + Context</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Link Icon */}
+                                    <div className="pl-12 opacity-0"></div>
+
+                                    {/* Step 2 */}
+                                    <div className="relative z-10 flex items-center gap-4 group">
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                                            <MessageSquare className="w-5 h-5 text-white" />
+                                        </div>
+                                        <div className="flex-1 p-3 rounded-xl bg-muted/30 border border-border/50 hover:bg-muted/60 transition-colors backdrop-blur-sm">
+                                            <div className="text-xs font-bold text-amber-500 uppercase tracking-wider mb-0.5">User Action</div>
+                                            <div className="text-sm font-medium text-foreground">Natural Language Query</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Link Icon */}
+                                    <div className="pl-12 opacity-0"></div>
+
+                                    {/* Step 3 */}
+                                    <div className="relative z-10 flex items-center gap-4 group">
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                                            <Sparkles className="w-5 h-5 text-white" />
+                                        </div>
+                                        <div className="flex-1 p-3 rounded-xl bg-muted/30 border border-border/50 hover:bg-muted/60 transition-colors backdrop-blur-sm">
+                                            <div className="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-0.5">Output</div>
+                                            <div className="text-sm font-medium text-foreground">Context-Aware Response</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </motion.section>
                 </main>
