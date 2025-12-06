@@ -8,7 +8,7 @@ import { TopicAnalysis } from "./TopicAnalysis";
 import Chatbot from "./Chatbot";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { BarChart3, Medal, Loader2, PieChart, MessageSquare, Sun, Moon, Github, FileText, BookOpen } from "lucide-react";
+import { BarChart3, Medal, Loader2, PieChart, MessageSquare, Sun, Moon, Github, FileText } from "lucide-react";
 
 interface SentimentData {
     id: number;

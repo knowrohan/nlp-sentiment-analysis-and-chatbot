@@ -54,7 +54,7 @@ export default function ReportPage() {
                                 the most effective approach for automated sentiment analysis.
 
                                 <br></br>
-                                <strong>Part 2</strong> Ideally I wanted to use the processed data for a RAG chatbot with ways to select topics, but unfortunately time didn't permit.
+                                <strong>Part 2</strong> Ideally I wanted to use the processed data for a RAG chatbot with ways to select topics, but unfortunately time didn&apos;t permit.
                                 Instead I used Gemini 2.0 Flash and a  RAG (Retrieval Augmented Generation) architecture for domain specific expertise.
                             </p>
                         </div>
