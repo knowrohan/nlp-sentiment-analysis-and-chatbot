@@ -61,23 +61,23 @@ export function BestTechnique({ data }: BestTechniqueProps) {
       className="max-w-6xl mx-auto space-y-6"
     >
       {/* Hero Section: The Verdict */}
-      <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-100 relative overflow-hidden">
+      <div className="bg-card rounded-3xl p-8 md:p-10 shadow-sm border border-border relative overflow-hidden">
         <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
-          <Trophy className="w-64 h-64 text-slate-900" />
+          <Trophy className="w-64 h-64 text-foreground opacity-10" />
         </div>
 
         <div className="relative z-10 flex flex-col md:flex-row gap-10 items-start md:items-center">
           <div className="flex-1 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 text-white text-xs font-semibold tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground text-background text-xs font-semibold tracking-wide uppercase">
               <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
               Highest Performing Model
             </div>
 
             <div>
-              <h2 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight">
+              <h2 className="text-4xl md:text-6xl font-extrabold text-foreground tracking-tight">
                 {best.name}
               </h2>
-              <p className="mt-4 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
+              <p className="mt-4 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
                 Outperforming other techniques, {best.name} demonstrated superior consistency across diverse sentence structures and sentiment nuances, making it the recommended model for production.
               </p>
             </div>
@@ -88,7 +88,7 @@ export function BestTechnique({ data }: BestTechniqueProps) {
               <span className="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-indigo-600 tracking-tighter">
                 {accuracy}%
               </span>
-              <span className="text-sm font-bold text-slate-400 uppercase tracking-widest mt-1">Overall Accuracy</span>
+              <span className="text-sm font-bold text-muted-foreground uppercase tracking-widest mt-1">Overall Accuracy</span>
             </div>
           </div>
         </div>
@@ -96,44 +96,44 @@ export function BestTechnique({ data }: BestTechniqueProps) {
 
       <div className="grid md:grid-cols-2 gap-6">
         {/* Why it won (Qualitative) */}
-        <Card className="rounded-3xl border-slate-100 shadow-sm p-8 flex flex-col justify-center">
-          <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+        <Card className="rounded-3xl border-border shadow-sm p-8 flex flex-col justify-center">
+          <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2">
             <Activity className="w-5 h-5 text-indigo-500" />
             Why it won
           </h3>
 
           <div className="space-y-8">
             <div className="flex gap-5">
-              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600">
+              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-300">
                 <Target className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-lg">Precision Handling</h4>
-                <p className="text-slate-500 mt-1 leading-relaxed">
+                <h4 className="font-bold text-foreground text-lg">Precision Handling</h4>
+                <p className="text-muted-foreground mt-1 leading-relaxed">
                   Minimizes false positives significantly better than Naive Bayes, ensuring high confidence in flagged sentiments.
                 </p>
               </div>
             </div>
 
             <div className="flex gap-5">
-              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-300">
                 <TrendingUp className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-lg">Generalization</h4>
-                <p className="text-slate-500 mt-1 leading-relaxed">
+                <h4 className="font-bold text-foreground text-lg">Generalization</h4>
+                <p className="text-muted-foreground mt-1 leading-relaxed">
                   Effectively captures underlying patterns in unseen data, avoiding the overfitting issues common in Decision Trees.
                 </p>
               </div>
             </div>
 
             <div className="flex gap-5">
-              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600">
+              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-300">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 text-lg">Robustness</h4>
-                <p className="text-slate-500 mt-1 leading-relaxed">
+                <h4 className="font-bold text-foreground text-lg">Robustness</h4>
+                <p className="text-muted-foreground mt-1 leading-relaxed">
                   Handles the noisy, informal nature of social media text (abbreviations, slang) without significant performance degradation.
                 </p>
               </div>
@@ -142,27 +142,27 @@ export function BestTechnique({ data }: BestTechniqueProps) {
         </Card>
 
         {/* Quantitative Breakdown */}
-        <Card className="rounded-3xl border-slate-100 shadow-sm p-8">
-          <h3 className="text-xl font-bold text-slate-900 mb-8">Performance by Category</h3>
+        <Card className="rounded-3xl border-border shadow-sm p-8">
+          <h3 className="text-xl font-bold text-foreground mb-8">Performance by Category</h3>
 
           <div className="space-y-8">
             {breakdown.map((item) => (
               <div key={item.sentiment} className="group">
                 <div className="flex justify-between items-end mb-2">
-                  <span className="font-bold text-slate-700 text-sm uppercase tracking-wide">{item.sentiment}</span>
+                  <span className="font-bold text-muted-foreground text-sm uppercase tracking-wide">{item.sentiment}</span>
                   <div className="text-right">
-                    <span className="block font-bold text-slate-900">Accuracy {item.accuracy}%</span>
-                    <span className="text-xs text-slate-400 font-medium">{item.count} samples</span>
+                    <span className="block font-bold text-foreground">Accuracy {item.accuracy}%</span>
+                    <span className="text-xs text-muted-foreground font-medium">{item.count} samples</span>
                   </div>
                 </div>
-                <div className="h-3 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div className="h-3 w-full bg-secondary rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${item.accuracy}%` }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className={`h-full rounded-full ${item.sentiment === 'Positive' ? 'bg-emerald-500' :
-                        item.sentiment === 'Negative' ? 'bg-rose-500' :
-                          item.sentiment === 'Neutral' ? 'bg-blue-500' : 'bg-slate-400'
+                      item.sentiment === 'Negative' ? 'bg-rose-500' :
+                        item.sentiment === 'Neutral' ? 'bg-blue-500' : 'bg-slate-400'
                       }`}
                   />
                 </div>
@@ -170,8 +170,8 @@ export function BestTechnique({ data }: BestTechniqueProps) {
             ))}
           </div>
 
-          <div className="mt-10 pt-6 border-t border-slate-100">
-            <p className="text-sm text-slate-400 leading-relaxed">
+          <div className="mt-10 pt-6 border-t border-border">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               This breakdown reveals where the model excels and where it struggles. A balanced performance across all categories indicates a healthy, unbiased model.
             </p>
           </div>

@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc; /* Slate 50 */
-  --foreground: #0f172a; /* Slate 900 */
+  /* Warm Chatbot Theme (Dark is now Default) */
+  --bot-bg: #0c0a09;
+  /* Stone 950 */
+  --bot-surface: #1c1917;
+  /* Stone 900 */
+  --bot-surface-hover: #292524;
+  /* Stone 800 */
+  --bot-primary: #f59e0b;
+  /* Amber 500 */
+  --bot-primary-foreground: #ffffff;
+  --bot-text: #fafaf9;
+  /* Stone 50 */
+  --bot-text-muted: #a8a29e;
+  /* Stone 400 */
+  --bot-border: #44403c;
+  /* Stone 700 */
+
+  /* Map to standard variables (Default Dark) */
+  --background: var(--bot-bg);
+  --foreground: var(--bot-text);
+  --card: var(--bot-surface);
+  --card-foreground: var(--bot-text);
+  --popover: var(--bot-surface);
+  --popover-foreground: var(--bot-text);
+  --primary: var(--bot-primary);
+  --primary-foreground: var(--bot-primary-foreground);
+  --secondary: var(--bot-surface-hover);
+  --secondary-foreground: var(--bot-text);
+  --muted: var(--bot-surface-hover);
+  --muted-foreground: var(--bot-text-muted);
+  --accent: var(--bot-surface-hover);
+  --accent-foreground: var(--bot-text);
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: var(--bot-border);
+  --input: var(--bot-surface);
+  --ring: var(--bot-primary);
+  --radius: 0.75rem;
+}
+
+.light {
+  --background: #f8fafc;
+  /* Slate 50 */
+  --foreground: #0f172a;
+  /* Slate 900 */
   --card: #ffffff;
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #3b82f6; /* Blue 500 */
+  --primary: #3b82f6;
+  /* Blue 500 */
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9; /* Slate 100 */
-  --secondary-foreground: #1e293b; /* Slate 800 */
+  --secondary: #f1f5f9;
+  /* Slate 100 */
+  --secondary-foreground: #1e293b;
+  /* Slate 800 */
   --muted: #f1f5f9;
-  --muted-foreground: #64748b; /* Slate 500 */
+  --muted-foreground: #64748b;
+  /* Slate 500 */
   --accent: #f1f5f9;
   --accent-foreground: #0f172a;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #e2e8f0; /* Slate 200 */
+  --border: #e2e8f0;
+  /* Slate 200 */
   --input: #e2e8f0;
   --ring: #3b82f6;
   --radius: 0.75rem;
+
+  /* Redefine bot vars for light mode if they are used directly */
+  --bot-bg: #f8fafc;
+  --bot-surface: #ffffff;
+  --bot-text: #0f172a;
+  --bot-text-muted: #64748b;
+  --bot-border: #e2e8f0;
 }
 
 @theme inline {
@@ -46,11 +101,44 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
+
+  /* Warm Chatbot Theme Mappings */
+  --color-bot-bg: var(--bot-bg);
+  --color-bot-surface: var(--bot-surface);
+  --color-bot-surface-hover: var(--bot-surface-hover);
+  --color-bot-primary: var(--bot-primary);
+  --color-bot-primary-foreground: var(--bot-primary-foreground);
+  --color-bot-text: var(--bot-text);
+  --color-bot-text-muted: var(--bot-text-muted);
+  --color-bot-border: var(--bot-border);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+
+.dark::view-transition-new(root) {
+  z-index: 1;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  transition: background-color 0.5s ease, color 0.5s ease;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

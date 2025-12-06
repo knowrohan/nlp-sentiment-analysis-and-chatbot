@@ -87,10 +87,10 @@ export function TechniqueAnalysis({ data }: AnalysisProps) {
                 transition={{ duration: 0.5 }}
                 className="col-span-2"
             >
-                <Card className="border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200">
+                <Card className="border-border shadow-sm hover:shadow-md transition-shadow duration-200">
                     <CardHeader>
-                        <CardTitle className="text-xl font-bold text-slate-800">Model Performance Comparison</CardTitle>
-                        <CardDescription className="text-slate-500">
+                        <CardTitle className="text-xl font-bold text-foreground">Model Performance Comparison</CardTitle>
+                        <CardDescription className="text-muted-foreground">
                             Comparing Accuracy, Precision, Recall, and F1 Score across all models.
                         </CardDescription>
                     </CardHeader>
@@ -106,18 +106,18 @@ export function TechniqueAnalysis({ data }: AnalysisProps) {
                                         bottom: 5,
                                     }}
                                 >
-                                    <CartesianGrid strokeDasharray="3 3" className="stroke-slate-100" vertical={false} />
+                                    <CartesianGrid strokeDasharray="3 3" className="stroke-border" vertical={false} />
                                     <XAxis
                                         dataKey="name"
-                                        className="text-xs font-medium text-slate-500"
-                                        tick={{ fill: '#64748b' }}
-                                        axisLine={{ stroke: '#e2e8f0' }}
+                                        className="text-xs font-medium text-muted-foreground"
+                                        tick={{ fill: 'currentColor' }}
+                                        axisLine={{ stroke: 'var(--border)' }}
                                         tickLine={false}
                                     />
                                     <YAxis
-                                        className="text-xs font-medium text-slate-500"
-                                        tick={{ fill: '#64748b' }}
-                                        axisLine={{ stroke: '#e2e8f0' }}
+                                        className="text-xs font-medium text-muted-foreground"
+                                        tick={{ fill: 'currentColor' }}
+                                        axisLine={{ stroke: 'var(--border)' }}
                                         tickLine={false}
                                     />
                                     <Tooltip
@@ -152,30 +152,30 @@ export function TechniqueAnalysis({ data }: AnalysisProps) {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="col-span-2"
             >
-                <Card className="border-slate-200 shadow-sm bg-slate-50/50">
+                <Card className="border-border shadow-sm bg-muted/50">
                     <CardContent className="pt-6">
                         <div className="grid gap-4 md:grid-cols-4">
                             <div className="space-y-1">
-                                <h4 className="font-semibold text-blue-900 text-sm">Accuracy</h4>
-                                <p className="text-xs text-slate-600 leading-relaxed">
+                                <h4 className="font-semibold text-blue-900 dark:text-blue-300 text-sm">Accuracy</h4>
+                                <p className="text-xs text-muted-foreground leading-relaxed">
                                     The ratio of correctly predicted observations to the total observations.
                                 </p>
                             </div>
                             <div className="space-y-1">
-                                <h4 className="font-semibold text-emerald-900 text-sm">Precision</h4>
-                                <p className="text-xs text-slate-600 leading-relaxed">
+                                <h4 className="font-semibold text-emerald-900 dark:text-emerald-300 text-sm">Precision</h4>
+                                <p className="text-xs text-muted-foreground leading-relaxed">
                                     The ratio of correctly predicted positive observations to the total predicted positives.
                                 </p>
                             </div>
                             <div className="space-y-1">
-                                <h4 className="font-semibold text-amber-900 text-sm">Recall</h4>
-                                <p className="text-xs text-slate-600 leading-relaxed">
+                                <h4 className="font-semibold text-amber-900 dark:text-amber-300 text-sm">Recall</h4>
+                                <p className="text-xs text-muted-foreground leading-relaxed">
                                     The ratio of correctly predicted positive observations to the all observations in actual class.
                                 </p>
                             </div>
                             <div className="space-y-1">
-                                <h4 className="font-semibold text-violet-900 text-sm">F1 Score</h4>
-                                <p className="text-xs text-slate-600 leading-relaxed">
+                                <h4 className="font-semibold text-violet-900 dark:text-violet-300 text-sm">F1 Score</h4>
+                                <p className="text-xs text-muted-foreground leading-relaxed">
                                     The weighted average of Precision and Recall.
                                 </p>
                             </div>
@@ -191,27 +191,27 @@ export function TechniqueAnalysis({ data }: AnalysisProps) {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                    <Card className="border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200 h-full">
+                    <Card className="border-border shadow-sm hover:shadow-md transition-shadow duration-200 h-full">
                         <CardHeader className="pb-2">
-                            <CardTitle className="text-lg font-bold text-slate-800">{metric.name}</CardTitle>
+                            <CardTitle className="text-lg font-bold text-foreground">{metric.name}</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="flex flex-col p-3 bg-blue-50 rounded-lg">
-                                    <span className="text-xs font-medium text-blue-600 uppercase tracking-wider">Accuracy</span>
-                                    <span className="text-2xl font-bold text-blue-900">{metric.Accuracy}%</span>
+                                <div className="flex flex-col p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                    <span className="text-xs font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wider">Accuracy</span>
+                                    <span className="text-2xl font-bold text-blue-900 dark:text-blue-200">{metric.Accuracy}%</span>
                                 </div>
-                                <div className="flex flex-col p-3 bg-violet-50 rounded-lg">
-                                    <span className="text-xs font-medium text-violet-600 uppercase tracking-wider">F1 Score</span>
-                                    <span className="text-2xl font-bold text-violet-900">{metric.F1}%</span>
+                                <div className="flex flex-col p-3 bg-violet-50 dark:bg-violet-900/20 rounded-lg">
+                                    <span className="text-xs font-medium text-violet-600 dark:text-violet-400 uppercase tracking-wider">F1 Score</span>
+                                    <span className="text-2xl font-bold text-violet-900 dark:text-violet-200">{metric.F1}%</span>
                                 </div>
-                                <div className="flex flex-col p-3 bg-emerald-50 rounded-lg">
-                                    <span className="text-xs font-medium text-emerald-600 uppercase tracking-wider">Precision</span>
-                                    <span className="text-2xl font-bold text-emerald-900">{metric.Precision}%</span>
+                                <div className="flex flex-col p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
+                                    <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Precision</span>
+                                    <span className="text-2xl font-bold text-emerald-900 dark:text-emerald-200">{metric.Precision}%</span>
                                 </div>
-                                <div className="flex flex-col p-3 bg-amber-50 rounded-lg">
-                                    <span className="text-xs font-medium text-amber-600 uppercase tracking-wider">Recall</span>
-                                    <span className="text-2xl font-bold text-amber-900">{metric.Recall}%</span>
+                                <div className="flex flex-col p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                                    <span className="text-xs font-medium text-amber-600 dark:text-amber-400 uppercase tracking-wider">Recall</span>
+                                    <span className="text-2xl font-bold text-amber-900 dark:text-amber-200">{metric.Recall}%</span>
                                 </div>
                             </div>
                         </CardContent>

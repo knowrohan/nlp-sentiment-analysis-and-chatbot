@@ -117,20 +117,20 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm"
+          className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-card p-6 rounded-3xl border border-border shadow-sm"
         >
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900">Topic Landscape</h2>
-            <p className="text-slate-500 mt-1">
-              Explore the top <span className="font-semibold text-slate-900">{topicMetrics.length}</span> discussed topics. Click on any bar to see what people are actually saying.
+            <h2 className="text-2xl font-bold tracking-tight text-foreground">Topic Landscape</h2>
+            <p className="text-muted-foreground mt-1">
+              Explore the top <span className="font-semibold text-foreground">{topicMetrics.length}</span> discussed topics. Click on any bar to see what people are actually saying.
             </p>
           </div>
-          <div className="flex space-x-1 bg-slate-100 p-1.5 rounded-xl">
+          <div className="flex space-x-1 bg-muted p-1.5 rounded-xl">
             <button
               onClick={() => setViewMode("sentiment")}
               className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${viewMode === "sentiment"
-                ? "bg-white shadow-sm text-blue-600 ring-1 ring-black/5"
-                : "text-slate-500 hover:text-slate-900 hover:bg-slate-200/50"
+                ? "bg-card shadow-sm text-blue-600 ring-1 ring-black/5 dark:ring-border"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
             >
               <BarChart2 className="w-4 h-4 mr-2" />
@@ -139,8 +139,8 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
             <button
               onClick={() => setViewMode("accuracy")}
               className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${viewMode === "accuracy"
-                ? "bg-white shadow-sm text-blue-600 ring-1 ring-black/5"
-                : "text-slate-500 hover:text-slate-900 hover:bg-slate-200/50"
+                ? "bg-card shadow-sm text-blue-600 ring-1 ring-black/5 dark:ring-border"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
             >
               <Zap className="w-4 h-4 mr-2" />
@@ -163,9 +163,9 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
             <div className="mb-6">
               <button
                 onClick={() => setSelectedTopic(null)}
-                className="group flex items-center text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                className="group flex items-center text-sm font-semibold text-muted-foreground hover:text-blue-600 transition-colors"
               >
-                <div className="bg-white border border-slate-200 p-2 rounded-lg mr-2 group-hover:border-blue-200 shadow-sm">
+                <div className="bg-card border border-border p-2 rounded-lg mr-2 group-hover:border-blue-200 shadow-sm">
                   <ArrowLeft className="w-4 h-4" />
                 </div>
                 Back to Overview
@@ -174,18 +174,18 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
 
             <div className="grid lg:grid-cols-3 gap-6">
               {/* Left Col: Topic Stats */}
-              <Card className="lg:col-span-1 rounded-3xl border-slate-100 shadow-sm overflow-hidden h-fit">
-                <div className="bg-slate-900 p-6 text-white">
+              <Card className="lg:col-span-1 rounded-3xl border-border shadow-sm overflow-hidden h-fit">
+                <div className="bg-foreground p-6 text-background">
                   <h2 className="text-3xl font-bold">{selectedTopicData.name}</h2>
-                  <p className="text-slate-400 mt-1">Entity Report</p>
+                  <p className="text-muted-foreground mt-1">Entity Report</p>
                 </div>
                 <div className="p-6 space-y-6">
                   <div>
-                    <div className="text-sm font-medium text-slate-500 uppercase tracking-wider">Volume</div>
-                    <div className="text-3xl font-bold text-slate-900">{selectedTopicData.total} <span className="text-base font-normal text-slate-400">mentions</span></div>
+                    <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Volume</div>
+                    <div className="text-3xl font-bold text-foreground">{selectedTopicData.total} <span className="text-base font-normal text-muted-foreground">mentions</span></div>
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-slate-500 uppercase tracking-wider">Dominant Sentiment</div>
+                    <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Dominant Sentiment</div>
                     <div className={`text-2xl font-bold ${selectedTopicData.dominantSentiment === 'Positive' ? 'text-emerald-600' :
                       selectedTopicData.dominantSentiment === 'Negative' ? 'text-rose-600' : 'text-blue-600'
                       }`}>
@@ -197,7 +197,7 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
 
               {/* Right Col: The Human Element (Samples) */}
               <div className="lg:col-span-2 space-y-4">
-                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
                   <MessageSquare className="w-5 h-5 text-blue-500" />
                   What people are saying
                 </h3>
@@ -209,18 +209,18 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.1 }}
-                      className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+                      className="bg-card p-6 rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow"
                     >
                       <div className="flex gap-4">
                         <div className="flex-shrink-0 mt-1">
-                          <Quote className="w-5 h-5 text-slate-300 fill-slate-100" />
+                          <Quote className="w-5 h-5 text-muted-foreground fill-muted" />
                         </div>
                         <div className="space-y-3">
-                          <p className="text-slate-700 leading-relaxed font-medium">&quot;{sample.text}&quot;</p>
+                          <p className="text-foreground leading-relaxed font-medium">&quot;{sample.text}&quot;</p>
                           <div className="flex gap-2">
-                            <span className={`text-xs px-2 py-1 rounded-md font-medium ${sample.sentiment === 'Positive' ? 'bg-emerald-50 text-emerald-700' :
-                              sample.sentiment === 'Negative' ? 'bg-rose-50 text-rose-700' :
-                                'bg-blue-50 text-blue-700'
+                            <span className={`text-xs px-2 py-1 rounded-md font-medium ${sample.sentiment === 'Positive' ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300' :
+                              sample.sentiment === 'Negative' ? 'bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300' :
+                                'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
                               }`}>
                               {sample.sentiment}
                             </span>
@@ -242,14 +242,14 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.3 }}
           >
-            <Card className="border-slate-200 shadow-sm rounded-3xl overflow-hidden">
-              <CardHeader className="bg-slate-50/50 border-b border-slate-100 pb-8">
-                <CardTitle className="text-xl font-bold text-slate-800">
+            <Card className="border-border shadow-sm rounded-3xl overflow-hidden">
+              <CardHeader className="bg-muted/50 border-b border-border pb-8">
+                <CardTitle className="text-xl font-bold text-foreground">
                   {viewMode === "sentiment"
                     ? "Sentiment Distribution by Topic"
                     : "Model Difficulty by Topic"}
                 </CardTitle>
-                <CardDescription className="text-slate-500">
+                <CardDescription className="text-muted-foreground">
                   {viewMode === "sentiment"
                     ? "Stacked breakdown of sentiments per entity. Click a bar to drill down."
                     : "Percentage of correct predictions per topic. Lower is harder."}
@@ -264,25 +264,25 @@ export function TopicAnalysis({ data }: TopicAnalysisProps) {
                       onClick={handleBarClick}
                       className="cursor-pointer"
                     >
-                      <CartesianGrid strokeDasharray="3 3" className="stroke-slate-100" vertical={false} />
+                      <CartesianGrid strokeDasharray="3 3" className="stroke-border" vertical={false} />
                       <XAxis
                         dataKey="name"
                         angle={-45}
                         textAnchor="end"
                         height={80}
-                        className="text-xs font-medium text-slate-500"
-                        tick={{ fill: '#64748b' }}
-                        axisLine={{ stroke: '#e2e8f0' }}
+                        className="text-xs font-medium text-muted-foreground"
+                        tick={{ fill: 'currentColor' }}
+                        axisLine={{ stroke: 'var(--border)' }}
                         tickLine={false}
                       />
                       <YAxis
-                        className="text-xs font-medium text-slate-500"
-                        tick={{ fill: '#64748b' }}
-                        axisLine={{ stroke: '#e2e8f0' }}
+                        className="text-xs font-medium text-muted-foreground"
+                        tick={{ fill: 'currentColor' }}
+                        axisLine={{ stroke: 'var(--border)' }}
                         tickLine={false}
                       />
                       <Tooltip
-                        cursor={{ fill: '#f8fafc', opacity: 0.8 }}
+                        cursor={{ fill: 'var(--muted)', opacity: 0.8 }}
                         contentStyle={{
                           backgroundColor: "#ffffff",
                           borderRadius: "16px",
